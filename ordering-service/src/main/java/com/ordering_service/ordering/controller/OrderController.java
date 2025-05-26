@@ -22,6 +22,7 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<CreateOrderResponse> createOrder(@RequestBody CreateOrderRequest dto) {
         CreateOrderResponse response = orderService.createOrder(dto);
@@ -29,7 +30,7 @@ public class OrderController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @GetMapping("/{orderCode}")
+    @GetMapping("/{orderNumber}")
     public ResponseEntity<SearchOrderCodeResponse> createSearchOrder(@PathVariable String orderNumber) {
         SearchOrderCodeResponse order = orderService.getOrderDtoByOrderCode(orderNumber);
         return (order != null) ? ResponseEntity.ok(order) : ResponseEntity.notFound().build();

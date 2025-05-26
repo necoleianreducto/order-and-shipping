@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
@@ -77,6 +76,7 @@ public class OrderMapper {
     public SearchOrderCodeResponse buildSearchOrderResponse(Order order) {
         SearchOrderCodeResponse searchOrderCodeResponse = new SearchOrderCodeResponse();
         searchOrderCodeResponse.setOrderNumber(order.getOrderNumber());
+        searchOrderCodeResponse.setCustomerName(order.getCustomerName());
         searchOrderCodeResponse.setOrderStatus(order.getOrderStatus());
         searchOrderCodeResponse.setTrackingNumber(order.getTrackingNumber());
         searchOrderCodeResponse.setOrderDate(order.getOrderDate());
@@ -93,7 +93,7 @@ public class OrderMapper {
                 })
                 .collect(Collectors.toList());
 
-        searchOrderCodeResponse.setOrderItemsDTOS(orderItems);
+        searchOrderCodeResponse.setItems(orderItems);
         return searchOrderCodeResponse;
     }
 

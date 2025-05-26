@@ -10,8 +10,9 @@ import java.util.List;
 public class SearchOrderCodeResponse {
 
     private String orderNumber;
+    private String customerName;
     private String orderStatus;
     private String trackingNumber;
     private LocalDateTime orderDate;
-    private List<OrderItemsDTO> orderItemsDTOS;
+    private List<OrderItemsDTO> items;
 }
