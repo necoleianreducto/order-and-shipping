@@ -3,6 +3,7 @@ package com.ordering_service.ordering.service;
 import com.ordering_service.ordering.client.ShippingClient;
 import com.ordering_service.ordering.dto.request.CreateOrderRequest;
 import com.ordering_service.ordering.dto.request.ShippingRequest;
+import com.ordering_service.ordering.dto.request.UpdateOrderStatusRequest;
 import com.ordering_service.ordering.dto.response.CreateOrderResponse;
 import com.ordering_service.ordering.dto.response.SearchOrderCodeResponse;
 import com.ordering_service.ordering.mapper.OrderMapper;
@@ -13,6 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -56,8 +59,10 @@ public class OrderService {
         return new CreateOrderResponse(order.getOrderNumber(), order.getOrderStatus(), trackingNumber, String.valueOf(order.getOrderDate()));
     }
 
-//
-//    public List<String> updateOrderStatus(UpdateOrderStatusRequestDTO requestDTO) {
-//        return new ArrayList<>();
-//    }
+
+    public void updateOrderStatus(UpdateOrderStatusRequest request) {
+        Order order = orderRepository.findByOrderNumber(request.getOrderNumber());
+        order.setOrderStatus(request.getNewOrderStatus());
+        orderRepository.save(order);
+    }
 }

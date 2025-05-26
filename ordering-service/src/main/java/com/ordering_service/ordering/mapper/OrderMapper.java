@@ -80,6 +80,7 @@ public class OrderMapper {
         searchOrderCodeResponse.setOrderStatus(order.getOrderStatus());
         searchOrderCodeResponse.setTrackingNumber(order.getTrackingNumber());
         searchOrderCodeResponse.setOrderDate(order.getOrderDate());
+        searchOrderCodeResponse.setAddress(order.getAddress());
 
         List<OrderItemsDTO> orderItems = order.getOrderItems().stream()
                 .map(item -> {

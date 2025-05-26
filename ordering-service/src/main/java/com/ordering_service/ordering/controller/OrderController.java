@@ -1,6 +1,7 @@
 package com.ordering_service.ordering.controller;
 
 import com.ordering_service.ordering.dto.request.CreateOrderRequest;
+import com.ordering_service.ordering.dto.request.UpdateOrderStatusRequest;
 import com.ordering_service.ordering.dto.response.CreateOrderResponse;
 import com.ordering_service.ordering.dto.response.SearchOrderCodeResponse;
 import com.ordering_service.ordering.service.OrderService;
@@ -31,8 +32,14 @@ public class OrderController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/{orderNumber}")
-    public ResponseEntity<SearchOrderCodeResponse> createSearchOrder(@PathVariable String orderNumber) {
+    public ResponseEntity<SearchOrderCodeResponse> searchOrderNumber(@PathVariable String orderNumber) {
         SearchOrderCodeResponse order = orderService.getOrderDtoByOrderCode(orderNumber);
         return (order != null) ? ResponseEntity.ok(order) : ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/updateOrderStatus")
+    public ResponseEntity<Void> searchOrderNumber(@RequestBody UpdateOrderStatusRequest request) {
+        orderService.updateOrderStatus(request);
+        return ResponseEntity.noContent().build();
     }
 }

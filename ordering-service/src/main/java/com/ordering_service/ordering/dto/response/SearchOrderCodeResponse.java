@@ -12,6 +12,7 @@ public class SearchOrderCodeResponse {
     private String orderNumber;
     private String customerName;
     private String orderStatus;
+    private String address;
     private String trackingNumber;
     private LocalDateTime orderDate;
     private List<OrderItemsDTO> items;

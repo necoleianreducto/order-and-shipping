@@ -1,7 +1,7 @@
 package com.shipping_service.shipping.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -35,12 +35,8 @@ public class Shipment {
     @Column(name = "total_amount", nullable = false, precision = 10, scale = 2)
     private BigDecimal totalAmount;
 
-    @Column(name = "estimate_delivery", updatable = false)
-    private LocalDate estimateDelivery;
-
-    @CreationTimestamp
-    @Column(name = "actual_delivery", updatable = false)
-    private LocalDateTime actualDelivery;
+    @Column(name = "courier", nullable = true)
+    private String courier;
 
     @CreationTimestamp
     @Column(name = "order_date", updatable = false)

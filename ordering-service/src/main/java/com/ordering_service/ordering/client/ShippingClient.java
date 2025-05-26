@@ -5,7 +5,9 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(name = "shipping-service", url = "${service.shipping.url}")
+@FeignClient(
+        name = "shipping-service",
+        url = "${service.shipping.url}")
 public interface ShippingClient {
 
     @PostMapping("/create-tracking")

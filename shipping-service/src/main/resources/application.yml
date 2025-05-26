@@ -37,9 +37,9 @@ spring:
 server:
   port: 8081
 
-order:
-  service:
-    url: http://localhost:8080
+service:
+  order:
+    url: http://localhost:8080/api/orders
 
 logging:
   level:
